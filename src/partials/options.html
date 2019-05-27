@@ -1,4 +1,4 @@
-<div class="boomtheme-panel">
+<div class="boomtheme-panel boom-panel">
     <div class="edit-tab-with-sidemenu">
         <aside class="edit-sidemenu-aside">
             <ul class="edit-sidemenu">
@@ -19,6 +19,16 @@
                         </span>
                         <span ng-if="ctrl.activeEditorTabIndex !== -3" style="margin-right: 7px;">
                             <i class="fa fa-paint-brush" style="margin-right: 7px;"></i> Comment Style
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a ng-click="ctrl.activeEditorTabIndex = -4">
+                        <span ng-if="ctrl.activeEditorTabIndex === -4" style="margin-right: 7px;color:orange;">
+                            <i class="fa fa-filter" style="margin-right: 7px;"></i> Comments Filter
+                        </span>
+                        <span ng-if="ctrl.activeEditorTabIndex !== -4" style="margin-right: 7px;">
+                            <i class="fa fa-filter" style="margin-right: 7px;"></i> Comments Filter
                         </span>
                     </a>
                 </li>
@@ -77,36 +87,38 @@
                         <div class="gr-form-inline">
                             <div class="gf-form">
                                 <label class="gf-form-label width-16">Tags</label>
-                                <input type="text" class="gf-form-input width-24 boom-comment-input-textarea" placeholder="Tags (Semicolon Seperated)" style="width: 100%" ng-model="this.ctrl.comment_tags"></input>
+                                <input type="text" class="gf-form-input width-24" placeholder="Tags (Semicolon Seperated)" style="width: 100%" ng-model="this.ctrl.comment_tags"></input>
                             </div>
                         </div>
                         <div class="gr-form-inline">
                             <div class="gf-form">
                                 <label class="gf-form-label width-16">Background Color</label>
-                                <input type="text" class="gf-form-input width-24 boom-comment-input-textarea" placeholder="BG Color (blank = default)" style="width: 100%" ng-model="this.ctrl.comment_bgColor"></input>
+                                <input type="text" class="gf-form-input width-24" placeholder="BG Color (blank = default)" style="width: 100%" ng-model="this.ctrl.comment_bgColor"></input>
                             </div>
                         </div>
                         <div class="gr-form-inline">
                             <div class="gf-form">
                                 <label class="gf-form-label width-16">Text Color</label>
-                                <input type="text" class="gf-form-input width-24 boom-comment-input-textarea" placeholder="Text Color (blank = default)" style="width: 100%" ng-model="this.ctrl.comment_textColor"></input>
+                                <input type="text" class="gf-form-input width-24" placeholder="Text Color (blank = default)" style="width: 100%" ng-model="this.ctrl.comment_textColor"></input>
                             </div>
                         </div>
                         <div class="gr-form-inline">
                             <div class="gf-form">
                                 <label class="gf-form-label width-16">Font Size</label>
-                                <input type="text" class="gf-form-input width-24 boom-comment-input-textarea" placeholder="100 to 500 (in %. Leave blank for default)" style="width: 100%" ng-model="this.ctrl.comment_fontSize"></input>
+                                <input type="text" class="gf-form-input width-24" placeholder="100 to 500 (in %. Leave blank for default)" style="width: 100%" ng-model="this.ctrl.comment_fontSize"></input>
                             </div>
                         </div>
                         <div class="gr-form-inline">
                             <div class="gf-form">
                                 <label class="gf-form-label width-16">Comment</label>
-                                <textarea type="text" rows="10" class="gf-form-input width-24 boom-comment-input-textarea" placeholder="What's up??" style="width: 100%" ng-model="this.ctrl.comment_text"></textarea>
+                                <textarea type="text" rows="10" class="gf-form-input width-24 " placeholder="What's up??" style="width: 100%" ng-model="this.ctrl.comment_text"></textarea>
                             </div>
                         </div>
                         <div class="gr-form-inline">
                             <div class="gf-form">
                                 <button type="submit" ng-click="this.ctrl.addComment()" class="btn btn-danger"><i class="fa fa-comments"></i>Send message to everyone in this Org.</button>
+                                <span class="split"></span>
+                                <button type="submit" ng-click="this.ctrl.addComment('this_dashboard')" class="btn btn-primary"><i class="fa fa-comments"></i>Send message to this dashboard</button>
                             </div>
                         </div>
                     </div>
@@ -114,6 +126,20 @@
             </div>
 
 
+        </div>
+        <div class="edit-tab-content" ng-if="ctrl.activeEditorTabIndex === -4">
+            <div class="editor-row">
+                <div class="section gf-form-group">
+                    <div class="boom-comments-form">
+                        <div class="gr-form-inline">
+                            <div class="gf-form">
+                                <label class="gf-form-label width-24">Show comments only from this dashboard</label>
+                                <input type="checkbox" class="gf-form-input width-4" ng-model="ctrl.panel.show_this_dashboard_only" ng-blur="ctrl.render()" ng-change="ctrl.render()">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="edit-tab-content" ng-if="ctrl.activeEditorTabIndex === -1">
             <div class="editor-row">

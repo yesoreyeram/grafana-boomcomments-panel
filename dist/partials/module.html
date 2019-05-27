@@ -10,7 +10,7 @@
                 <div style="padding:10px;" class="boom-comment-item">
                     <b ng-if="ctrl.panel.hide_username !== true">{{comment.login}} : </b>
                     <span>{{comment.displayText}}</span>
-                    <span ng-if="ctrl.panel.hide_timestamp !== true"> - <i>({{comment.date}}</i>)</span>
+                    <span ng-if="ctrl.panel.hide_timestamp !== true"> <i> - {{comment.date}}</i></span>
                 </div>
             </div>
         </div>

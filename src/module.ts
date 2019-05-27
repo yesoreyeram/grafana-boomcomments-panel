@@ -58,7 +58,6 @@ class BoomCommentsCtl extends PanelCtrl {
   public panelDefaults = {
 
     comment_postbox_position: "bottom",
-    comment_tag: CONFIG.comment_tag,
     comments_order: "new_comments_at_top",
     enable_inline_commentbox: false,
     highlight_newComments: true,
@@ -100,14 +99,18 @@ class BoomCommentsCtl extends PanelCtrl {
 
   }
 
-  public addComment(): void {
+  public addComment(comment_type: string): void {
 
     if (this.ctrl.comment_text && this.ctrl.comment_text !== "") {
 
-      let commentOptions = {
-        "tags": [this.ctrl.panel.comment_tag],
+      let commentOptions: any = {
+        "tags": [CONFIG.comment_tag],
         "text": `${this.ctrl.comment_text}`
       };
+
+      if (comment_type === "this_dashboard" && this.dashboard.id) {
+        commentOptions.dashboardId = this.dashboard.id;
+      }
 
       if (this.ctrl.comment_tags && this.ctrl.comment_tags !== "") {
         _.each(this.ctrl.comment_tags.split(";").map(t => t.trim()), tag => {
@@ -145,7 +148,12 @@ class BoomCommentsCtl extends PanelCtrl {
 
     this.$timeout.cancel(this.nextTickPromise);
 
-    this.backendSrv.get(`/api/annotations?tags=boom-comment&limit=${this.panel.number_of_comments_to_show || 10}`).then(annotations => {
+    let annotations_url = `/api/annotations?`
+    annotations_url += `tags=boom-comment`;
+    annotations_url += `&limit=${this.panel.number_of_comments_to_show || 10}`;
+    annotations_url += `${this.panel.show_this_dashboard_only === true ? "&dashboardId=" + this.dashboard.id : ""}`;
+
+    this.backendSrv.get(annotations_url).then(annotations => {
       this.raw_comments = annotations;
       this.render();
     });
@@ -204,6 +212,15 @@ let getPanelStyle = function (highlight_newComments_color): string {
 
 };
 
+let appendLeadingZeroes = function (n) {
+
+  if (n <= 9) {
+    return "0" + n;
+  }
+  return n;
+
+}
+
 BoomCommentsCtl.prototype.render = function () {
 
 
@@ -223,7 +240,10 @@ BoomCommentsCtl.prototype.render = function () {
     comment.displayText = `${annotation.text}`;
     comment.displayTitle = getTooltipMessage(annotation);
 
-    comment.date = new Date(annotation.created);
+
+    let annotation_created_date = new Date(annotation.created)
+    let formatted_date = annotation_created_date.getFullYear() + "-" + appendLeadingZeroes((annotation_created_date.getMonth() + 1)) + "-" + appendLeadingZeroes(annotation_created_date.getDate()) + " " + appendLeadingZeroes(annotation_created_date.getHours()) + ":" + appendLeadingZeroes(annotation_created_date.getMinutes()) + ":" + appendLeadingZeroes(annotation_created_date.getSeconds())
+    comment.date = formatted_date;
 
     let display_comment_classes: any[] = [];
     if (this.ctrl.panel.highlight_newComments === true && comment.created > ((new Date()).getTime() - (this.ctrl.panel.highlight_newComments_minutes * 60 * 1000))) {
