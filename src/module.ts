@@ -148,7 +148,7 @@ class BoomCommentsCtl extends PanelCtrl {
 
     this.$timeout.cancel(this.nextTickPromise);
 
-    let annotations_url = `/api/annotations?`
+    let annotations_url = `/api/annotations?`;
     annotations_url += `tags=boom-comment`;
     annotations_url += `&limit=${this.panel.number_of_comments_to_show || 10}`;
     annotations_url += `${this.panel.show_this_dashboard_only === true ? "&dashboardId=" + this.dashboard.id : ""}`;
@@ -219,7 +219,7 @@ let appendLeadingZeroes = function (n) {
   }
   return n;
 
-}
+};
 
 BoomCommentsCtl.prototype.render = function () {
 
@@ -241,8 +241,18 @@ BoomCommentsCtl.prototype.render = function () {
     comment.displayTitle = getTooltipMessage(annotation);
 
 
-    let annotation_created_date = new Date(annotation.created)
-    let formatted_date = annotation_created_date.getFullYear() + "-" + appendLeadingZeroes((annotation_created_date.getMonth() + 1)) + "-" + appendLeadingZeroes(annotation_created_date.getDate()) + " " + appendLeadingZeroes(annotation_created_date.getHours()) + ":" + appendLeadingZeroes(annotation_created_date.getMinutes()) + ":" + appendLeadingZeroes(annotation_created_date.getSeconds())
+    let annotation_created_date = new Date(annotation.created);
+    let formatted_date = annotation_created_date.getFullYear()
+      + "-"
+      + appendLeadingZeroes((annotation_created_date.getMonth() + 1))
+      + "-"
+      + appendLeadingZeroes(annotation_created_date.getDate())
+      + " "
+      + appendLeadingZeroes(annotation_created_date.getHours())
+      + ":"
+      + appendLeadingZeroes(annotation_created_date.getMinutes())
+      + ":"
+      + appendLeadingZeroes(annotation_created_date.getSeconds());
     comment.date = formatted_date;
 
     let display_comment_classes: any[] = [];
