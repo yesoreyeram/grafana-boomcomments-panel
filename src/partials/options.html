@@ -1,0 +1,155 @@
+<div class="boomtheme-panel">
+    <div class="edit-tab-with-sidemenu">
+        <aside class="edit-sidemenu-aside">
+            <ul class="edit-sidemenu">
+                <li>
+                    <a ng-click="ctrl.activeEditorTabIndex = -2">
+                        <span ng-if="ctrl.activeEditorTabIndex === -2" style="margin-right: 7px;color:orange;">
+                            <i class="fa fa-comments" style="margin-right: 7px;"></i> Post Comment
+                        </span>
+                        <span ng-if="ctrl.activeEditorTabIndex !== -2" style="margin-right: 7px;">
+                            <i class="fa fa-comments" style="margin-right: 7px;"></i> Post Comment
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a ng-click="ctrl.activeEditorTabIndex = -3">
+                        <span ng-if="ctrl.activeEditorTabIndex === -3" style="margin-right: 7px;color:orange;">
+                            <i class="fa fa-paint-brush" style="margin-right: 7px;"></i> Comment Style
+                        </span>
+                        <span ng-if="ctrl.activeEditorTabIndex !== -3" style="margin-right: 7px;">
+                            <i class="fa fa-paint-brush" style="margin-right: 7px;"></i> Comment Style
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a ng-click="ctrl.activeEditorTabIndex = -1">
+                        <span ng-if="ctrl.activeEditorTabIndex === -1" style="margin-right: 7px;color:orange;">
+                            <i class="fa fa-gear" style="margin-right: 7px;"></i> Comment Box Settings
+                        </span>
+                        <span ng-if="ctrl.activeEditorTabIndex !== -1" style="margin-right: 7px;">
+                            <i class="fa fa-gear" style="margin-right: 7px;"></i> Comment Box Settings
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </aside>
+        <div class="edit-tab-content" ng-if="ctrl.activeEditorTabIndex === -3">
+            <div class="editor-row">
+                <div class="section gf-form-group">
+                    <div class="gr-form-inline">
+                        <div class="gf-form">
+                            <label class="gf-form-label width-16">Blink new comments</label>
+                            <input type="checkbox" class="gf-form-input width-4" ng-model="ctrl.panel.highlight_newComments" ng-blur="ctrl.render()" ng-change="ctrl.render()">
+                        </div>
+                    </div>
+                    <div class="gr-form-inline" ng-if="ctrl.panel.highlight_newComments === true">
+                        <div class="gf-form">
+                            <label class="gf-form-label width-16">Blink for N minutes</label>
+                            <input type="text" placeholder="Minutes to highlight" class="gf-form-input width-16" ng-model="ctrl.panel.highlight_newComments_minutes" ng-blur="ctrl.render()" ng-change="ctrl.render()">
+                        </div>
+                    </div>
+                    <div class="gr-form-inline" ng-if="ctrl.panel.highlight_newComments === true">
+                        <div class="gf-form">
+                            <label class="gf-form-label width-16">Blink Color</label>
+                            <input type="text" placeholder="Highlight color" class="gf-form-input width-16" ng-model="ctrl.panel.highlight_newComments_color" ng-blur="ctrl.render()" ng-change="ctrl.render()">
+                        </div>
+                    </div>
+                    <div class="gr-form-inline">
+                        <div class="gf-form">
+                            <label class="gf-form-label width-16">Hide username</label>
+                            <input type="checkbox" class="gf-form-input width-4" ng-model="ctrl.panel.hide_username" ng-blur="ctrl.render()" ng-change="ctrl.render()">
+                        </div>
+                    </div>
+                    <div class="gr-form-inline">
+                        <div class="gf-form">
+                            <label class="gf-form-label width-16">Hide timestamp</label>
+                            <input type="checkbox" class="gf-form-input width-4" ng-model="ctrl.panel.hide_timestamp" ng-blur="ctrl.render()" ng-change="ctrl.render()">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="edit-tab-content" ng-if="ctrl.activeEditorTabIndex === -2">
+            <div class="editor-row">
+                <div class="section gf-form-group">
+                    <div class="boom-comments-form">
+                        <div class="gr-form-inline">
+                            <div class="gf-form">
+                                <label class="gf-form-label width-16">Tags</label>
+                                <input type="text" class="gf-form-input width-24 boom-comment-input-textarea" placeholder="Tags (Semicolon Seperated)" style="width: 100%" ng-model="this.ctrl.comment_tags"></input>
+                            </div>
+                        </div>
+                        <div class="gr-form-inline">
+                            <div class="gf-form">
+                                <label class="gf-form-label width-16">Background Color</label>
+                                <input type="text" class="gf-form-input width-24 boom-comment-input-textarea" placeholder="BG Color (blank = default)" style="width: 100%" ng-model="this.ctrl.comment_bgColor"></input>
+                            </div>
+                        </div>
+                        <div class="gr-form-inline">
+                            <div class="gf-form">
+                                <label class="gf-form-label width-16">Text Color</label>
+                                <input type="text" class="gf-form-input width-24 boom-comment-input-textarea" placeholder="Text Color (blank = default)" style="width: 100%" ng-model="this.ctrl.comment_textColor"></input>
+                            </div>
+                        </div>
+                        <div class="gr-form-inline">
+                            <div class="gf-form">
+                                <label class="gf-form-label width-16">Font Size</label>
+                                <input type="text" class="gf-form-input width-24 boom-comment-input-textarea" placeholder="100 to 500 (in %. Leave blank for default)" style="width: 100%" ng-model="this.ctrl.comment_fontSize"></input>
+                            </div>
+                        </div>
+                        <div class="gr-form-inline">
+                            <div class="gf-form">
+                                <label class="gf-form-label width-16">Comment</label>
+                                <textarea type="text" rows="10" class="gf-form-input width-24 boom-comment-input-textarea" placeholder="What's up??" style="width: 100%" ng-model="this.ctrl.comment_text"></textarea>
+                            </div>
+                        </div>
+                        <div class="gr-form-inline">
+                            <div class="gf-form">
+                                <button type="submit" ng-click="this.ctrl.addComment()" class="btn btn-danger"><i class="fa fa-comments"></i>Send message to everyone in this Org.</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="edit-tab-content" ng-if="ctrl.activeEditorTabIndex === -1">
+            <div class="editor-row">
+                <div class="section gf-form-group">
+                    <div class="gr-form-inline">
+                        <div class="gf-form">
+                            <label class="gf-form-label width-16">Refresh Frequency in seconds</label>
+                            <input type="text" placeholder="Refresh frequency in seconds" class="gf-form-input width-16" ng-model="ctrl.panel.refresh_frequency" ng-blur="ctrl.render()" ng-change="ctrl.render()">
+                        </div>
+                    </div>
+                    <div class="gr-form-inline">
+                        <div class="gf-form">
+                            <label class="gf-form-label width-16">Number of Comments to Show</label>
+                            <input type="text" placeholder="Number of Comments to show" class="gf-form-input width-16" ng-model="ctrl.panel.number_of_comments_to_show" ng-blur="ctrl.render()" ng-change="ctrl.render()">
+                        </div>
+                    </div>
+                    <div class="gr-form-inline">
+                        <div class="gf-form">
+                            <label class="gf-form-label width-16">Comments Order</label>
+                            <select class="gf-form-input width-16" ng-model="ctrl.panel.comments_order" ng-options="f.value as f.text for f in ctrl.comments_order" ng-change="ctrl.render()"></select>
+                        </div>
+                    </div>
+                    <div class="gr-form-inline">
+                        <div class="gf-form">
+                            <label class="gf-form-label width-16">Enable Inline Comment Box</label>
+                            <input type="checkbox" class="gf-form-input width-4" ng-model="ctrl.panel.enable_inline_commentbox" ng-blur="ctrl.render()" ng-change="ctrl.render()">
+                        </div>
+                    </div>
+                    <div class="gr-form-inline" ng-if="ctrl.panel.enable_inline_commentbox === true">
+                        <div class="gf-form">
+                            <label class="gf-form-label width-16">Inline Comment Box positon</label>
+                            <select class="gf-form-input width-16" ng-model="ctrl.panel.comment_postbox_position" ng-options="f.value as f.text for f in ctrl.comment_postbox_positions" ng-change="ctrl.render()"></select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

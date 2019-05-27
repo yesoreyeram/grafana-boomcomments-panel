@@ -1,0 +1,35 @@
+{
+  "type": "panel",
+  "name": "Boom Comments",
+  "id": "yesoreyeram-boomcomments-panel",
+  "dataFormats": [
+    "table",
+    "timeseries"
+  ],
+  "info": {
+    "version": "0.0.1",
+    "description": "Comments, Notifications, Chat for Grafana dashboards",
+    "author": {
+      "name": "Sriramajeyam Sugumaran",
+      "url": "https://www.google.com/search?q=Sriramajeyam+Sugumaran"
+    },
+    "keywords": [
+      "grafana",
+      "plugin",
+      "panel",
+      "comments",
+      "chat",
+      "notifications"
+    ],
+    "links": [
+      {
+        "name": "Github",
+        "url": "https://github.com/yesoreyeram/yesoreyeram-boomcomments-panel"
+      }
+    ]
+  },
+  "dependencies": {
+    "grafanaVersion": "4.x.x",
+    "plugins": []
+  }
+}

@@ -1,0 +1,36 @@
+.boom-panel .mini-split {
+  margin-right: 10px; }
+
+.boom-panel .split {
+  margin-right: 20px; }
+
+.boom-panel .boom-btn {
+  padding: 10px;
+  margin-right: 10px;
+  min-width: 200px;
+  text-transform: lowercase; }
+
+.boom-panel .boom-btn-mini {
+  padding: 10px;
+  margin-right: 10px; }
+
+.boom-panel h6.text-header {
+  padding: 0 0 10px 0;
+  font-weight: bolder; }
+  .boom-panel h6.text-header i {
+    font-weight: 100; }
+
+.boom-panel .boom-comments-form .boom-comment-input-textarea {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid black; }
+
+.boom-panel .blink-comment {
+  animation-name: blinkbg;
+  animation-duration: 1s;
+  animation-iteration-count: infinite; }
+
+.boom-panel h6.text-header {
+  color: darkmagenta; }
+  .boom-panel h6.text-header i {
+    color: darksalmon; }
