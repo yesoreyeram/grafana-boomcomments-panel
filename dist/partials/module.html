@@ -3,7 +3,7 @@
     <div class="panel-scroll">
         <div class="boom-comments-form" ng-if="ctrl.panel.enable_inline_commentbox === true && ctrl.panel.comment_postbox_position === 'top' " style="padding:10px;">
             <input class="boom-comment-input-textarea" placeholder="What's up??" style="width: 80%" ng-model="this.ctrl.comment_text"></input>
-            <button type="submit" ng-click="this.ctrl.addComment()" class="btn btn-secondary" style="width:15%"><i class="fa fa-comments">Send</i></button>
+            <button type="submit" ng-click="this.ctrl.addComment('this_dashboard')" class="btn btn-secondary" style="width:15%"><i class="fa fa-comments">Send</i></button>
         </div>
         <div class="boom-comments-display">
             <div ng-repeat="comment in ctrl.comments track by $index" title="{{comment.displayTitle}}" class="{{comment.displayClass}}" ng-style="comment.inlinestyle">
@@ -16,7 +16,7 @@
         </div>
         <div class="boom-comments-form" ng-if="ctrl.panel.enable_inline_commentbox === true && ctrl.panel.comment_postbox_position === 'bottom' " style="padding:10px;">
             <input type="text" class="boom-comment-input-textarea" placeholder="What's up??" style="width: 70%" ng-model="this.ctrl.comment_text"></input>
-            <button type="submit" ng-click="this.ctrl.addComment()" class="btn btn-secondary" style="width: 20%"><i class="fa fa-comments"></i></button>
+            <button type="submit" ng-click="this.ctrl.addComment('this_dashboard')" class="btn btn-secondary" style="width: 20%"><i class="fa fa-comments"></i></button>
         </div>
     </div>
 </div>
