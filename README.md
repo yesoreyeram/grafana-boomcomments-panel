@@ -11,7 +11,7 @@
 - Comment style can be customized. ( Color, BG Color, Size )
 - Ability to filter the messages
 
-[![image](https://user-images.githubusercontent.com/153843/92629623-7f375300-f2c6-11ea-9b0f-283c09ccad78.png)](https://www.youtube.com/embed/BHytgxOR4OI)
+[![image](https://user-images.githubusercontent.com/153843/92634274-f58a8400-f2cb-11ea-9271-bf9a5f9a6c4d.png)](https://www.youtube.com/embed/BHytgxOR4OI)
 [![image](https://user-images.githubusercontent.com/153843/92631284-0dacd400-f2c9-11ea-89a5-0ce2292e6f11.png)](https://youtu.be/BHytgxOR4OI)
 
 
